@@ -409,7 +409,7 @@ func createInboundDispatcher(e *endpoint, fd int, isSocket bool, fID int32, opts
 func isSocketFD(fd int) (bool, error) {
 	var stat unix.Stat_t
 	if err := unix.Fstat(fd, &stat); err != nil {
-		return false, fmt.Errorf("unix.Fstat(%v,...) failed: %v", fd, err)
+		return false, nil
 	}
 	return (stat.Mode & unix.S_IFSOCK) == unix.S_IFSOCK, nil
 }
