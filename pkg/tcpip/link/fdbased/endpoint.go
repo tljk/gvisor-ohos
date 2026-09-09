@@ -474,7 +474,7 @@ func JoinPacketFanoutGroup(fd int, fID int32) error {
 func IsSocketFD(fd int) (bool, error) {
 	var stat unix.Stat_t
 	if err := unix.Fstat(fd, &stat); err != nil {
-		return false, fmt.Errorf("unix.Fstat(%v,...) failed: %v", fd, err)
+		return false, nil
 	}
 	return (stat.Mode & unix.S_IFSOCK) == unix.S_IFSOCK, nil
 }
